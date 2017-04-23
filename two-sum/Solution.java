@@ -26,8 +26,9 @@ class Solution {
 
     public static void main (String [] args) {
         int [] a = {3, 2, 4};
-        int t = 6;
         int [] res = new int[2];
+        int t = 6;
+
         Solution so = new Solution();
         res = so.twoSum(a, t);
 
