@@ -24,13 +24,27 @@ class Solution {
 
         maxLength = maxLength > stack.size() ? maxLength : stack.size();*/
 
-        return maxLength;
+        //使用hashMap降低时间复杂度
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>(); 
+        int i = -1;
+        int len = 0;
+
+        for (int j = 0; j < s.length(); j++) {
+            if (hashMap.containsKey(String.valueOf(s.charAt(j)))) {
+                int current = hashMap.get(String.valueOf(s.charAt(j)));
+                i = i > current ? i : current;
+            }
+
+            hashMap.put(String.valueOf(s.charAt(j)), j);  
+            len = j - i > len ? j - i : len;
+        }
+
+        return len;
     }
 
     public static void main(String args[]) {
-        //TODO
         Solution s = new Solution();
-        int maxLength = s.lengthOfLongestSubstring("au");
+        int maxLength = s.lengthOfLongestSubstring("");
 
         System.out.println(maxLength);
     }
